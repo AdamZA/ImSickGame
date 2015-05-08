@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\cellDestroyScript.cs">
+    <Files>
+      <File FileName="Assets\Scripts\test2DmoveScript.cs" Line="34" Column="1" />
+      <File FileName="Assets\Scripts\cellDestroyScript.cs" Line="24" Column="4" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="5" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
