@@ -17,16 +17,16 @@ public class test2DmoveScript : MonoBehaviour
 	void Update () 
 	{
 		//Checks for WASD input, and moves in the appropriate direction. It will never move in the Y axes, except when moving between levels (maybe).
-		if(Input.GetKey (KeyCode.A))
+		if(Input.GetKey (KeyCode.D))
 			pathogenTransform.Translate(moveSpeed * Time.deltaTime,0,0);
 
-		else if(Input.GetKey (KeyCode.D))
+		else if(Input.GetKey (KeyCode.A))
 			pathogenTransform.Translate(-moveSpeed * Time.deltaTime,0,0);
 
-		if(Input.GetKey (KeyCode.S))
+		if(Input.GetKey (KeyCode.W))
 			pathogenTransform.Translate(0,0,moveSpeed * Time.deltaTime);
 
-		else if(Input.GetKey (KeyCode.W))
+		else if(Input.GetKey (KeyCode.S))
 			pathogenTransform.Translate(0,0,-moveSpeed * Time.deltaTime);
 
 	}
