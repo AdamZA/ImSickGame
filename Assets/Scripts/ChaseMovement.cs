@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CellMovement : MonoBehaviour {
+public class ChaseMovement : MonoBehaviour {
 
 //	public Vector3 speed = new Vector2(10,0,10);
 //
