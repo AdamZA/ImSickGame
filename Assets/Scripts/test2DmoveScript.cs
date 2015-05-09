@@ -24,10 +24,10 @@ public class test2DmoveScript : MonoBehaviour
 			pathogenTransform.Translate(-moveSpeed * Time.deltaTime,0,0);
 
 		if(Input.GetKey (KeyCode.W))
-			pathogenTransform.Translate(0,0,moveSpeed * Time.deltaTime);
+			pathogenTransform.Translate(0,moveSpeed * Time.deltaTime,0);
 
 		else if(Input.GetKey (KeyCode.S))
-			pathogenTransform.Translate(0,0,-moveSpeed * Time.deltaTime);
+			pathogenTransform.Translate(0,-moveSpeed * Time.deltaTime,0);
 
 	}
 }
