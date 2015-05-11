@@ -32,7 +32,12 @@ public class ChaseMovement : MonoBehaviour {
 	
 	private float currentAngle;
 	private float targetAngle;
-	
+
+	// Add a thrust force to push an object in its current forward
+	// direction (to simulate a rocket motor, say).
+	//public float thrust;
+	//public Rigidbody rb;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -42,15 +47,16 @@ public class ChaseMovement : MonoBehaviour {
 		transform.position = pos;
 		
 		currentAngle = GetAngleToTarget();
+	//	rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		
 		targetAngle = GetAngleToTarget();
 		currentAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
 		transform.position += Quaternion.Euler(0,currentAngle,0) * Vector3.right * movementSpeed * Time.deltaTime;
-		
+		//rb.AddForce(transform.forward * thrust);
 	}
 	
 	float GetAngleToTarget()
