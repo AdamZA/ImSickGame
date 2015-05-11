@@ -16,7 +16,7 @@ public class test2DmoveScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//Checks for WASD input, and moves in the appropriate direction. It will never move in the Y axes, except when moving between levels (maybe).
+		//Checks for WASD input, and moves in the appropriate direction. It will never move in the Z axes, except when moving between levels (maybe).
 		if(Input.GetKey (KeyCode.D))
 			pathogenTransform.Translate(moveSpeed * Time.deltaTime,0,0);
 
