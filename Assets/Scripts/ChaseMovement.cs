@@ -36,9 +36,9 @@ public class ChaseMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		// Force object to be at z = 0
+		// Force object to be at y = 0
 		Vector3 pos = transform.position;
-		pos.z = 0f;
+		pos.y = 0f;
 		transform.position = pos;
 		
 		currentAngle = GetAngleToTarget();
@@ -49,14 +49,14 @@ public class ChaseMovement : MonoBehaviour {
 		
 		targetAngle = GetAngleToTarget();
 		currentAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
-		transform.position += Quaternion.Euler(0,0,currentAngle) * Vector3.right * movementSpeed * Time.deltaTime;
+		transform.position += Quaternion.Euler(0,currentAngle,0) * Vector3.right * movementSpeed * Time.deltaTime;
 		
 	}
 	
 	float GetAngleToTarget()
 	{
 		Vector3 v3 = target.transform.position - transform.position;        
-		return Mathf.Atan2(v3.y, v3.x) * Mathf.Rad2Deg;
+		return Mathf.Atan2(-v3.z, v3.x) * Mathf.Rad2Deg;
 	}
 
 }

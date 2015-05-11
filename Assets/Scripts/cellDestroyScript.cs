@@ -24,5 +24,4 @@ public class cellDestroyScript : MonoBehaviour
 			Destroy (gameObject);
 	}
 
-
 }
