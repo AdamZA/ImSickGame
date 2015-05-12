@@ -3,13 +3,34 @@ using System.Collections;
 
 public class RandomMovement : MonoBehaviour {
 
+	public float thrust;
+	private Rigidbody rb;
+	private int time=1;
+	private Vector3 pos;
+
 	// Use this for initialization
 	void Start () {
-	
+		// Force object to be at y = 0
+		pos = transform.position;
+		pos.y = 0f;
+		transform.position = pos;
+		rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate () {
+		time++;
+		MoveRandomly ();
+		pos = transform.position;
+		pos.y = 0f;
+		transform.position = pos;
+	}
+
+	void MoveRandomly() {
+		if (time == 10) {
+			Vector3 randomMove = Random.insideUnitSphere * 5;
+			rb.AddForce (randomMove*thrust);
+			time = 1;
+		}
 	}
 }
