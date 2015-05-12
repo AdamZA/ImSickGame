@@ -27,16 +27,16 @@ public class ChaseMovement : MonoBehaviour {
 //		GetComponent<Rigidbody>().velocity = movement;
 //	}
 	public GameObject target;
-	public float movementSpeed = 5f;
-	public float rotationSpeed = 90f;
-	
-	private float currentAngle;
-	private float targetAngle;
+//	public float movementSpeed = 5f;
+//	public float rotationSpeed = 90f;
+//	
+//	private float currentAngle;
+//	private float targetAngle;
 
 	// Add a thrust force to push an object in its current forward
 	// direction (to simulate a rocket motor, say).
-	//public float thrust;
-	//public Rigidbody rb;
+	public float thrust=70f;
+	public Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
@@ -45,24 +45,25 @@ public class ChaseMovement : MonoBehaviour {
 		Vector3 pos = transform.position;
 		pos.y = 0f;
 		transform.position = pos;
-		
-		currentAngle = GetAngleToTarget();
-	//	rb = GetComponent<Rigidbody> ();
+//		
+//		currentAngle = GetAngleToTarget();
+		rb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		
-		targetAngle = GetAngleToTarget();
-		currentAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
-		transform.position += Quaternion.Euler(0,currentAngle,0) * Vector3.right * movementSpeed * Time.deltaTime;
+//		targetAngle = GetAngleToTarget();
+//		currentAngle = Mathf.MoveTowardsAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+//		transform.position += Quaternion.Euler(0,currentAngle,0) * Vector3.right * movementSpeed * Time.deltaTime;
 		//rb.AddForce(transform.forward * thrust);
+		rb.AddForce ((target.transform.position - transform.position).normalized * thrust * Time.deltaTime);
 	}
 	
-	float GetAngleToTarget()
-	{
-		Vector3 v3 = target.transform.position - transform.position;        
-		return Mathf.Atan2(-v3.z, v3.x) * Mathf.Rad2Deg;
-	}
+//	float GetAngleToTarget()
+//	{
+//		Vector3 v3 = target.transform.position - transform.position;        
+//		return Mathf.Atan2(-v3.z, v3.x) * Mathf.Rad2Deg;
+//	}
 
 }
