@@ -4,8 +4,9 @@ using System.Collections;
 public class test2DmoveScript : MonoBehaviour 
 {
 	//Class variables:
-	public float moveSpeed = 2.0f;
+	public float moveSpeed = 4.0f;
 	public Transform pathogenTransform; //reference to this object's transform, set in the Unity IDE
+	private int timer=0;
 
 	// Use this for initialization
 	void Start () 
@@ -29,5 +30,20 @@ public class test2DmoveScript : MonoBehaviour
 		else if(Input.GetKey (KeyCode.S))
 			pathogenTransform.Translate(0,0,-moveSpeed * Time.deltaTime);
 
+		if (timer > 0) {
+			timer--;
+			if (timer==0) moveSpeed=4f;
+		}
+
+	}
+
+	void OnCollisionEnter(Collision c)
+	{
+		if (c.gameObject.tag.Equals ("SpeedUp")) {
+			//increase the speed of the player
+			moveSpeed=moveSpeed+5;
+			timer=20;
+			Destroy(c.gameObject);
+		}
 	}
 }

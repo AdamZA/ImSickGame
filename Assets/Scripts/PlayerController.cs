@@ -3,11 +3,13 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-	public float speed = 4.0f;
+	public float speed=4f;
+	private int timer=0;
+
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 
 	void Update () {
@@ -20,6 +22,20 @@ public class PlayerController : MonoBehaviour {
 				Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10));                
 				transform.position = Vector3.Lerp(transform.position, touchPosition, Time.smoothDeltaTime);
 			}
+		}
+		if (timer > 0) {
+			timer--;
+			if (timer==0) speed=4f;
+		}
+	}
+
+	void OnCollisionEnter(Collision c)
+	{
+		if (c.gameObject.tag.Equals ("SpeedUp")) {
+			//increase the speed of the player
+			speed=speed+5;
+			timer=20;
+			Destroy(c.gameObject);
 		}
 	}
 }
