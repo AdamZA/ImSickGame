@@ -44,7 +44,7 @@ public class ChaseMovement : MonoBehaviour {
 	}
 
 	void MoveRandomly() {
-		if (time == 10) {
+		if (time == 7) {
 			Vector3 randomMove = Random.insideUnitSphere;
 			rb.AddForce (randomMove*thrust);
 			time = 1;

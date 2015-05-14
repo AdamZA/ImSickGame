@@ -24,10 +24,12 @@ public class RandomMovement : MonoBehaviour {
 		pos = transform.position;
 		pos.y = 0f;
 		transform.position = pos;
+		if (rb.velocity.magnitude > 1.5f)
+			rb.velocity = new Vector3 ();
 	}
 
 	void MoveRandomly() {
-		if (time == 10) {
+		if (time == 5) {
 			Vector3 randomMove = Random.insideUnitSphere * 5;
 			rb.AddForce (randomMove*thrust);
 			time = 1;
