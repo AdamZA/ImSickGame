@@ -37,13 +37,11 @@ public class test2DmoveScript : MonoBehaviour
 
 	}
 
-	void OnCollisionEnter(Collision c)
+
+	public void SpeedUp()
 	{
-		if (c.gameObject.tag.Equals ("SpeedUp")) {
 			//increase the speed of the player
-			moveSpeed=moveSpeed+5;
-			timer=20;
-			Destroy(c.gameObject);
-		}
+			moveSpeed=7.0f;
+			timer=500;
 	}
 }
