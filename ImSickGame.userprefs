@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\test2DmoveScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/StartMenu.cs">
     <Files>
-      <File FileName="Assets\Scripts\cellDestroyScript.cs" Line="33" Column="60" />
-      <File FileName="Assets\Scripts\RandomMovement.cs" Line="26" Column="28" />
-      <File FileName="Assets\Scripts\test2DmoveScript.cs" Line="40" Column="1" />
+      <File FileName="Assets/Scripts/StartMenu.cs" Line="24" Column="32" />
+      <File FileName="Assets/Scripts/ExitMenu.cs" Line="17" Column="36" />
+      <File FileName="Assets/Scripts/HelpMenu.cs" Line="13" Column="36" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
