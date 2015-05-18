@@ -6,6 +6,8 @@ public class cellDestroyScript : MonoBehaviour
 	public GameObject cellObject;
 	public ParticleSystem deadPS;
 	public AudioClip deadSound;
+	public ScoreScript scoreScript;
+	public bool dead = false; // this just prevents scripts from running twice
 
 	// Use this for initialization
 	void Start () 
@@ -22,7 +24,7 @@ public class cellDestroyScript : MonoBehaviour
 	//basic collision script
 	void OnCollisionEnter(Collision c)
 	{
-		if (c.gameObject.tag.Equals ("Player")) 
+		if (c.gameObject.tag.Equals ("Player") && dead == false) 
 		{
 			Transform pos = this.transform;
 
@@ -35,6 +37,8 @@ public class cellDestroyScript : MonoBehaviour
 				this.GetComponent<Rigidbody>().velocity = Vector3.zero;
 				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
 				Destroy(gameObject, 1.0f);	
+				scoreScript.addScore();
+				dead = true;
 			 }
 			if(this.tag.Equals ("Antibody"))
 			{
@@ -44,6 +48,7 @@ public class cellDestroyScript : MonoBehaviour
 				Instantiate(deadPS, new Vector3(pos.position.x, pos.position.y, pos.position.z), Quaternion.identity);
 				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
 				Destroy(gameObject);	
+				dead = true;
 			}
 			if(this.tag.Equals ("SpeedUp"))
 			{
@@ -53,6 +58,7 @@ public class cellDestroyScript : MonoBehaviour
 				this.GetComponent<Animator>().SetBool("dead", true);
 				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
 				Destroy(gameObject, 1.0f);
+				dead = true;
 			}
 		}
 	}
