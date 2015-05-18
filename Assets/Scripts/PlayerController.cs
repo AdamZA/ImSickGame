@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 			if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved) {
 				// If the finger is on the screen, move the object smoothly to the touch position
 				Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10));                
-				transform.position = Vector3.Lerp(transform.position, touchPosition, Time.smoothDeltaTime);
+				transform.position = Vector3.Lerp(-transform.position, touchPosition, Time.smoothDeltaTime);
 			}
 		}
 		if (timer > 0) {
@@ -29,13 +29,10 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision c)
+	public void SpeedUp()
 	{
-		if (c.gameObject.tag.Equals ("SpeedUp")) {
-			//increase the speed of the player
-			speed=speed+5;
-			timer=20;
-			Destroy(c.gameObject);
-		}
+		//increase the speed of the player
+		speed=7.0f;
+		timer=500;
 	}
 }

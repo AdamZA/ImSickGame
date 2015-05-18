@@ -28,6 +28,7 @@ public class cellDestroyScript : MonoBehaviour
 		{
 			Transform pos = this.transform;
 
+			this.GetComponent<Rigidbody>().useGravity = false;
 
 			if(this.tag.Equals ("Blood"))
 			 {
@@ -56,6 +57,7 @@ public class cellDestroyScript : MonoBehaviour
 			{
 				this.GetComponent<SphereCollider>().enabled = false;
 				c.gameObject.GetComponent<test2DmoveScript>().SpeedUp();
+				c.gameObject.GetComponent<PlayerController>().SpeedUp();
 				Instantiate(deadPS, new Vector3(pos.position.x, pos.position.y, pos.position.z), Quaternion.identity);
 				this.GetComponent<Animator>().SetBool("dead", true);
 				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
