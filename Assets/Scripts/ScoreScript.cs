@@ -3,24 +3,30 @@ using System.Collections;
 
 public class ScoreScript : MonoBehaviour {
 
-	public int score;
+	public int score = 0;
 	public Transform scoreBar;
 	private int cellstowin = 4;
+	public string nextlevel;
 
 	// Use this for initialization
 	void Start () 
 	{
 		score = 0;
+		scoreBar.localScale = new Vector3 (0.0f, 0.0f, 0.0f);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		scoreBar.localScale = new Vector3 (score * 1.0f / cellstowin * 6.0f, 0.001f, 0.2f);
+		if( scoreBar.localScale.x < (score * 1.0f / cellstowin * 6.0f))
+		{
+			scoreBar.localScale = new Vector3 (scoreBar.localScale.x + 0.05f, 0.01f, 0.2f);
+		}
+
 
 		if(score >= cellstowin)
 		{
-			Application.LoadLevel("Level2");
+			Application.LoadLevel(nextlevel);
 		}
 	}
 

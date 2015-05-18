@@ -47,8 +47,10 @@ public class cellDestroyScript : MonoBehaviour
 				this.GetComponent<ChaseMovement>().enabled = false;
 				Instantiate(deadPS, new Vector3(pos.position.x, pos.position.y, pos.position.z), Quaternion.identity);
 				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
-				Destroy(gameObject);	
 				dead = true;
+				c.gameObject.GetComponent<ShrinkScript>().shrink();
+				Destroy(gameObject);	
+
 			}
 			if(this.tag.Equals ("SpeedUp"))
 			{
