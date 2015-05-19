@@ -9,6 +9,7 @@ public class cellDestroyScript : MonoBehaviour
 	public ScoreScript scoreScript;
 	public bool dead = false; // this just prevents scripts from running twice
 
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,13 +31,17 @@ public class cellDestroyScript : MonoBehaviour
 
 			this.GetComponent<Rigidbody>().useGravity = false;
 
+//			if(){
+//				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
+//			}
+			
+
 			if(this.tag.Equals ("Blood"))
 			 {
 				this.GetComponent<MeshCollider>().enabled = false;
 				Instantiate(deadPS, new Vector3(pos.position.x, pos.position.y, pos.position.z), Quaternion.identity);
 				this.GetComponent<Animator>().SetBool("dead", true);
 				this.GetComponent<Rigidbody>().velocity = Vector3.zero;
-				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
 				Destroy(gameObject, 1.0f);	
 				scoreScript.addScore();
 				dead = true;
@@ -47,7 +52,7 @@ public class cellDestroyScript : MonoBehaviour
 				this.GetComponent<Animator>().SetBool("dead", true);
 				this.GetComponent<ChaseMovement>().enabled = false;
 				Instantiate(deadPS, new Vector3(pos.position.x, pos.position.y, pos.position.z), Quaternion.identity);
-				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
+//				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
 				dead = true;
 				c.gameObject.GetComponent<ShrinkScript>().shrink();
 				Destroy(gameObject);	
@@ -60,10 +65,15 @@ public class cellDestroyScript : MonoBehaviour
 				c.gameObject.GetComponent<PlayerController>().SpeedUp();
 				Instantiate(deadPS, new Vector3(pos.position.x, pos.position.y, pos.position.z), Quaternion.identity);
 				this.GetComponent<Animator>().SetBool("dead", true);
-				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
+//				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
 				Destroy(gameObject, 1.0f);
 				dead = true;
 			}
+		}
+
+		else if (c.gameObject.tag.Equals ("Antibody") && dead == false) 
+		{
+			this.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		}
 	}
 

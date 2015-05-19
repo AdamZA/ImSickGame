@@ -24,7 +24,7 @@ public class ChaseMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		time++;
 		distance = Vector3.Distance(target.transform.position, transform.position);
 		if (distance < 3 && distance > 0.05) {

@@ -5,7 +5,7 @@ public class ScoreScript : MonoBehaviour {
 
 	public int score = 0;
 	public Transform scoreBar;
-	private int cellstowin = 4;
+	public int cellstowin = 4;
 	public string nextlevel;
 
 	// Use this for initialization
