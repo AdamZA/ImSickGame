@@ -62,9 +62,9 @@ public class StartMenu : MonoBehaviour {
 	}
 
 	//
-	public void LaunchChooseMenu()
+	public void ReturnToBeginningStart()
 	{
-//		Application.LoadLevel (1);
+		Application.LoadLevel ("MainMenu");
 	}
 
 	//starting game

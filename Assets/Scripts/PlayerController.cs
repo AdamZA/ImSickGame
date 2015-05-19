@@ -45,14 +45,14 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (timer > 0) {
 			timer--;
-			if (timer==0) speedUpBonus=4f;
+			if (timer==0) speedUpBonus=1f;
 		}
 	}
 
 	public void SpeedUp()
 	{
 		//increase the speed of the player
-		speedUpBonus=1.6f;
-		timer=500;
+		speedUpBonus=1.4f;
+		timer=20;
 	}
 }
