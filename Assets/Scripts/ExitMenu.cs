@@ -24,7 +24,7 @@ public class ExitMenu : MonoBehaviour {
 	public void LaunchMainMenu()
 	{
 		pathogen.SetActive (true);
-		exitMenu.enabled = false;
+		exitMenu.gameObject.SetActive(false);
 	}
 	
 	//quitting game

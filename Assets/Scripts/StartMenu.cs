@@ -21,12 +21,13 @@ public class StartMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		exitMenu.GetComponent<Canvas> ();
 		helpMenu.GetComponent<Canvas> ();
 		exitButton.GetComponent<Button> ();
 
-		exitMenu.enabled = false;
-		helpMenu.enabled = false;
+		exitMenu.gameObject.SetActive(false);
+		helpMenu.gameObject.SetActive(false);
 
 		//more button
 		moreButton.GetComponent<Button> ();
@@ -36,31 +37,28 @@ public class StartMenu : MonoBehaviour {
 
 		pathogen.GetComponent<GameObject> ();
 		tapArea.GetComponent<Button> ();
-		
 	}
 
 	public void MoreClick()
 	{
-		if (moreCanvas.isActiveAndEnabled) {
-			moreCanvas.gameObject.SetActive (false);
-			
-		} else {
-			moreCanvas.gameObject.SetActive (true);
-		}
+		Debug.Log (moreCanvas.isActiveAndEnabled);
+		moreCanvas.gameObject.SetActive (!moreCanvas.isActiveAndEnabled);
 	}
 
 	//click the "exit" button on the start menu
 	public void LaunchExitMenu()
 	{
+//		this.GetComponent<Canvas>().enabled = false;
 		pathogen.SetActive (false);
-		exitMenu.enabled = true;
+		exitMenu.gameObject.SetActive(true);
 	}
 
 	//click the "exit" button on the start menu
 	public void LaunchHelpMenu()
 	{
-		pathogen.SetActive (false);
-		helpMenu.enabled = true;
+//		pathogen.SetActive (false);
+		helpMenu.gameObject.SetActive(true);		
+		this.GetComponent<Canvas>().gameObject.SetActive(false);
 	}
 
 	//
@@ -72,7 +70,7 @@ public class StartMenu : MonoBehaviour {
 	//starting game
 	public void StartGame()
 	{
-		Application.LoadLevel (1);
+		Application.LoadLevel ("Level1");
 	}
 
 

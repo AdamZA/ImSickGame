@@ -18,9 +18,15 @@ public class PlayerController : MonoBehaviour {
 			Touch touch = Input.GetTouch(0);
 			
 			if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved) {
+
 				// If the finger is on the screen, move the object smoothly to the touch position
-				Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10));                
-				transform.position = Vector3.Lerp(-transform.position, touchPosition, Time.smoothDeltaTime);
+				Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, 10));  
+//				Vector3 moveDirection = transform.position - touchPosition;
+//				moveDirection.Normalize();
+//				moveDirection.y = 10f;
+
+				transform.position = Vector3.Lerp(transform.position, touchPosition, Time.smoothDeltaTime);
+//				this.gameObject.GetComponent<Rigidbody>().AddForce(touchPosition*speed);
 			}
 		}
 		if (timer > 0) {
