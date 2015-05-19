@@ -32,7 +32,7 @@ public class cellDestroyScript : MonoBehaviour
 			this.GetComponent<Rigidbody>().useGravity = false;
 
 //			if(){
-//				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
+				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
 //			}
 			
 

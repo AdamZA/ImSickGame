@@ -27,7 +27,7 @@ public class ChaseMovement : MonoBehaviour {
 	void Update () {
 		time++;
 		distance = Vector3.Distance(target.transform.position, transform.position);
-		if (distance < 3 && distance > 0.05) {
+		if (distance < 4 && distance > 0.05) {
 			Chase ();
 		} else {
 			MoveRandomly ();
