@@ -20,7 +20,7 @@ public class StartMenu : MonoBehaviour {
 	public Button tapArea; 
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
 
 		exitMenu.GetComponent<Canvas> ();
 		helpMenu.GetComponent<Canvas> ();
