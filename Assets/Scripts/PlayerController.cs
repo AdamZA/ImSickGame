@@ -4,11 +4,12 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float speed=500.0f;
+	public int timeOfSpeedUp = 100;
 	private int timer=0;
 	private Vector3 delta;
 	private Rigidbody rb;
 	private Vector3 pos;
-	private float speedUpBonus=1.0f;
+	public float speedUpBonus=100.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 				delta = touchPosition - transform.position;
 				delta.y=0f;
 				delta.Normalize();
-				rb.AddForce (delta * speed * speedUpBonus*Time.deltaTime);
+				rb.AddForce (delta * speed * Time.deltaTime);
 				//Vector3 moveDirection = transform.position - touchPosition;
 //				moveDirection.Normalize();
 //				moveDirection.y = 10f;
@@ -45,14 +46,17 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (timer > 0) {
 			timer--;
-			if (timer==0) speedUpBonus=1f;
+			if (timer==0) {
+				speed-=speedUpBonus;
+				Debug.Log("Speed up finished");
+			}
 		}
 	}
 
 	public void SpeedUp()
 	{
 		//increase the speed of the player
-		speedUpBonus=1.4f;
-		timer=20;
+		speed+=speedUpBonus;
+		timer=timeOfSpeedUp;
 	}
 }

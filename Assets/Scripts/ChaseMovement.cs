@@ -7,6 +7,7 @@ public class ChaseMovement : MonoBehaviour {
 
 	// Add a thrust force to push an object in its current forward direction
 	public float thrust=70f;
+	public float maxDist = 8f;
 	public float chaseFactor=4;
 	private Rigidbody rb;
 	private float distance;
@@ -27,7 +28,7 @@ public class ChaseMovement : MonoBehaviour {
 	void Update () {
 		time++;
 		distance = Vector3.Distance(target.transform.position, transform.position);
-		if (distance < 4 && distance > 0.05) {
+		if (distance < maxDist && distance > 0.05) {
 			Chase ();
 		} else {
 			MoveRandomly ();
