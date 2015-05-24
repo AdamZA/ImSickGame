@@ -8,18 +8,19 @@ public class cellDestroyScript : MonoBehaviour
 	public AudioClip deadSound;
 	public ScoreScript scoreScript;
 	public bool dead = false; // this just prevents scripts from running twice
+	public InGameMenus menu;
+
 
 
 	// Use this for initialization
 	void Start () 
 	{
-		
+		menu = GameObject.Find ("GameCanvas").GetComponent<InGameMenus> ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-
 	}
 
 	//basic collision script
@@ -31,9 +32,9 @@ public class cellDestroyScript : MonoBehaviour
 
 			this.GetComponent<Rigidbody>().useGravity = false;
 
-//			if(){
+			if(menu.muteSounds == 0){
 				AudioSource.PlayClipAtPoint(deadSound, new Vector3(pos.position.x, pos.position.y, pos.position.z));
-//			}
+			}
 			
 
 			if(this.tag.Equals ("Blood"))

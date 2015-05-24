@@ -19,6 +19,11 @@ public class StartMenu : MonoBehaviour {
 	public GameObject pathogen; 
 	public Button tapArea; 
 
+	public int muteSounds;
+	public int muteMusic;
+	public AudioSource music;
+
+
 	// Use this for initialization
 	public void Start () {
 
@@ -37,6 +42,13 @@ public class StartMenu : MonoBehaviour {
 
 		pathogen.GetComponent<GameObject> ();
 		tapArea.GetComponent<Button> ();
+		music = GameObject.Find("Music").GetComponent<AudioSource>();
+
+		muteSounds = PlayerPrefs.GetInt ("sounds");
+		muteMusic = PlayerPrefs.GetInt ("music");
+		
+		if (muteMusic == 1)
+			music.mute = true;
 	}
 
 	public void MoreClick()
@@ -71,6 +83,38 @@ public class StartMenu : MonoBehaviour {
 	public void StartGame()
 	{
 		Application.LoadLevel ("Level1");
+	}
+
+	public void MuteSoundsFunc ()
+	{
+		//update prefs
+		
+		if(PlayerPrefs.GetInt("sounds") == 1)
+		{
+			PlayerPrefs.SetInt ("sounds", 0);
+			muteSounds = 0;
+		}
+		else {
+			PlayerPrefs.SetInt("sounds", 1);
+			muteSounds = 1;
+		}
+	}
+	
+	public void MuteMusicFunc ()
+	{
+		//update prefs
+		
+		if(PlayerPrefs.GetInt("music") == 1)
+		{
+			PlayerPrefs.SetInt ("music", 0);
+			muteMusic = 0;
+			music.mute = false;
+		}
+		else {
+			PlayerPrefs.SetInt("music", 1);
+			muteMusic = 1;
+			music.mute = true;
+		}
 	}
 
 

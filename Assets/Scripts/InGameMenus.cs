@@ -12,7 +12,12 @@ public class InGameMenus : MonoBehaviour {
 	public Button pauseBtn;
 	public Button playBtn;
 	public Button backBtn;
-	
+
+	public int muteSounds;
+	public int muteMusic;
+
+	public AudioSource music;
+
 	// Use this for initialization
 	public void Start () {
 		Time.timeScale = 1;
@@ -26,6 +31,14 @@ public class InGameMenus : MonoBehaviour {
 
 		playBtn.gameObject.SetActive(false);
 		backBtn.gameObject.SetActive(false);
+
+		music = GameObject.Find("Music").GetComponent<AudioSource>();
+
+		muteSounds = PlayerPrefs.GetInt ("sounds");
+		muteMusic = PlayerPrefs.GetInt ("music");
+		
+		if (muteMusic == 1)
+			music.mute = true;
 	}
 
 	public void LaunchPause (){
@@ -54,6 +67,38 @@ public class InGameMenus : MonoBehaviour {
 		backBtn.gameObject.SetActive(false);
 		gameCanvas.GetComponent<Image> ().enabled = false;
 		moreCanvas.gameObject.SetActive(false);
+	}
+
+	public void MuteSoundsFunc ()
+	{
+		//update prefs
+
+		if(PlayerPrefs.GetInt("sounds") == 1)
+		{
+			PlayerPrefs.SetInt ("sounds", 0);
+			muteSounds = 0;
+		}
+		else {
+			PlayerPrefs.SetInt("sounds", 1);
+			muteSounds = 1;
+		}
+	}
+
+	public void MuteMusicFunc ()
+	{
+		//update prefs
+		
+		if(PlayerPrefs.GetInt("music") == 1)
+		{
+			PlayerPrefs.SetInt ("music", 0);
+			muteMusic = 0;
+			music.mute = false;
+		}
+		else {
+			PlayerPrefs.SetInt("music", 1);
+			muteMusic = 1;
+			music.mute = true;
+		}
 	}
 	
 	public void ReturnToMainMenu()
