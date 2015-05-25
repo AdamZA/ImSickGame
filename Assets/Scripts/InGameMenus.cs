@@ -18,6 +18,14 @@ public class InGameMenus : MonoBehaviour {
 
 	public AudioSource music;
 
+	
+	public Button soundButton;
+	public Button musicButton;
+	public Sprite musicIcon;
+	public Sprite musicIconOFF;
+	public Sprite soundIcon;
+	public Sprite soundIconOFF;
+
 	// Use this for initialization
 	public void Start () {
 		Time.timeScale = 1;
@@ -77,10 +85,12 @@ public class InGameMenus : MonoBehaviour {
 		{
 			PlayerPrefs.SetInt ("sounds", 0);
 			muteSounds = 0;
+			soundButton.image.sprite = soundIcon;
 		}
 		else {
 			PlayerPrefs.SetInt("sounds", 1);
 			muteSounds = 1;
+			soundButton.image.sprite = soundIconOFF;
 		}
 	}
 
@@ -93,11 +103,13 @@ public class InGameMenus : MonoBehaviour {
 			PlayerPrefs.SetInt ("music", 0);
 			muteMusic = 0;
 			music.mute = false;
+			musicButton.image.sprite = musicIcon;
 		}
 		else {
 			PlayerPrefs.SetInt("music", 1);
 			muteMusic = 1;
 			music.mute = true;
+			musicButton.image.sprite = musicIconOFF;
 		}
 	}
 	

@@ -12,8 +12,8 @@ public class StartMenu : MonoBehaviour {
 	//more button
 	public Button moreButton;
 	public Canvas moreCanvas;
-//	public Button soundButton;
-//	public Button musicButton;
+	public Button soundButton;
+	public Button musicButton;
 	public Button helpButton;
 
 	public GameObject pathogen; 
@@ -21,27 +21,21 @@ public class StartMenu : MonoBehaviour {
 
 	public int muteSounds;
 	public int muteMusic;
+
 	public AudioSource music;
+
+	public Sprite musicIcon;
+	public Sprite musicIconOFF;
+	public Sprite soundIcon;
+	public Sprite soundIconOFF;
+
 
 
 	// Use this for initialization
 	public void Start () {
-
-		exitMenu.GetComponent<Canvas> ();
-		helpMenu.GetComponent<Canvas> ();
-		exitButton.GetComponent<Button> ();
-
 		exitMenu.gameObject.SetActive(false);
 		helpMenu.gameObject.SetActive(false);
-
-		//more button
-		moreButton.GetComponent<Button> ();
-		helpButton.GetComponent<Button> ();
-		moreCanvas.GetComponent<Canvas> ();
 		moreCanvas.gameObject.SetActive (false);
-
-		pathogen.GetComponent<GameObject> ();
-		tapArea.GetComponent<Button> ();
 		music = GameObject.Find("Music").GetComponent<AudioSource>();
 
 		muteSounds = PlayerPrefs.GetInt ("sounds");
@@ -93,10 +87,12 @@ public class StartMenu : MonoBehaviour {
 		{
 			PlayerPrefs.SetInt ("sounds", 0);
 			muteSounds = 0;
+			soundButton.image.sprite = soundIcon;
 		}
 		else {
 			PlayerPrefs.SetInt("sounds", 1);
 			muteSounds = 1;
+			soundButton.image.sprite = soundIconOFF;
 		}
 	}
 	
@@ -109,11 +105,13 @@ public class StartMenu : MonoBehaviour {
 			PlayerPrefs.SetInt ("music", 0);
 			muteMusic = 0;
 			music.mute = false;
+			musicButton.image.sprite = musicIcon;
 		}
 		else {
 			PlayerPrefs.SetInt("music", 1);
 			muteMusic = 1;
 			music.mute = true;
+			musicButton.image.sprite = musicIconOFF;
 		}
 	}
 
