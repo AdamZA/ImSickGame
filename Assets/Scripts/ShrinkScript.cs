@@ -9,11 +9,14 @@ public class ShrinkScript : MonoBehaviour
 	public float zoomcount = 1.0f;
 	public float shrinkAmount = 0.25f;
 	public int shrinkCounter = 0;
+	public TextMesh lives;
 
 	// Use this for initialization
 	void Start () 
 	{
 		size = 1;
+		lives = GameObject.Find ("Lives").GetComponent<TextMesh>();
+		lives.text = "Lives left: 3";
 	}
 	
 	// Update is called once per frame
@@ -32,7 +35,13 @@ public class ShrinkScript : MonoBehaviour
 		zoomcount = zoomcount + 0.8f;
 		shrinkAmount = shrinkAmount - 0.05f;
 		shrinkCounter = shrinkCounter + 1;
+		lives.text = "Lives left: " + (3 - shrinkCounter);
+
+
 		if (shrinkCounter == 4)
+		{
+			lives.text = "Dead";
 			Application.LoadLevel ("Loss");
+		}
 	}
 }

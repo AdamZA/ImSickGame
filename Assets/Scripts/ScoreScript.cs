@@ -7,12 +7,15 @@ public class ScoreScript : MonoBehaviour {
 	public Transform scoreBar;
 	public int cellstowin = 4;
 	public string nextlevel;
+	public TextMesh scoreText;
 
 	// Use this for initialization
 	void Start () 
 	{
 		score = 0;
 		scoreBar.localScale = new Vector3 (0.0f, 0.0f, 0.0f);
+		scoreText = GameObject.Find ("ScoreText").GetComponent<TextMesh>();
+		scoreText.text = "Cells Absorbed: " + score + " / " + cellstowin;
 	}
 	
 	// Update is called once per frame
@@ -28,11 +31,13 @@ public class ScoreScript : MonoBehaviour {
 		{
 			Application.LoadLevel(nextlevel);
 		}
+
 	}
 
 	public void addScore()
 	{
 		score = score + 1;
+		scoreText.text = "Cells Absorbed: " + score + " / " + cellstowin;
 
 	}
 }

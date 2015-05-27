@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody rb;
 	private Vector3 pos;
 	public float speedUpBonus=100.0f;
+	public TextMesh buffs;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour {
 		pos.y = 0.45f;
 		transform.position = pos;
 		rb = GetComponent<Rigidbody> ();
+		buffs = GameObject.Find ("Buffs").GetComponent<TextMesh>();
+		buffs.text = "";
 	}
 
 	void Update () {
@@ -44,10 +47,14 @@ public class PlayerController : MonoBehaviour {
 			pos.y = 0.45f;
 			transform.position = pos;
 		}
-		if (timer > 0) {
+		if (timer > 0) 
+		{
 			timer--;
-			if (timer==0) {
+			buffs.text = "Speedup Left: " + timer/100.0f + "s";
+			if (timer==0) 
+			{
 				speed-=speedUpBonus;
+				buffs.text = "";
 				Debug.Log("Speed up finished");
 			}
 		}
@@ -58,5 +65,6 @@ public class PlayerController : MonoBehaviour {
 		//increase the speed of the player
 		speed+=speedUpBonus;
 		timer=timeOfSpeedUp;
+		buffs.text = "Speedup Left: " + timer + "ms";
 	}
 }
