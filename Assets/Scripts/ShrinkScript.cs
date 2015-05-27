@@ -6,8 +6,8 @@ public class ShrinkScript : MonoBehaviour
 	public Transform pathogen;
 	public Transform cameraPos;
 	public float size; //just follow the size of like, one of the sides
-	public float zoomcount = 1.0f;
-	public float shrinkAmount = 0.25f;
+	private float zoomcount = 0.5f;
+	private float shrinkAmount = 0.17f;
 	public int shrinkCounter = 0;
 	public TextMesh lives;
 
@@ -32,10 +32,11 @@ public class ShrinkScript : MonoBehaviour
 	{
 		size = size - shrinkAmount;
 		cameraPos.position = new Vector3 (cameraPos.position.x, cameraPos.position.y - zoomcount, cameraPos.position.z);
-		zoomcount = zoomcount + 0.8f;
-		shrinkAmount = shrinkAmount - 0.05f;
+		//zoomcount = zoomcount + 0.15f;
+		//shrinkAmount = shrinkAmount - 0.05f;
 		shrinkCounter = shrinkCounter + 1;
 		lives.text = "Lives left: " + (3 - shrinkCounter);
+		pathogen.transform.position = new Vector3 (pathogen.transform.position.x, 0.0f, pathogen.transform.position.z);
 
 
 		if (shrinkCounter == 4)
