@@ -87,6 +87,11 @@ public class StartMenu : MonoBehaviour {
 		Application.LoadLevel ("Level1");
 	}
 
+	public void StartTutorial()
+	{
+		Application.LoadLevel ("Tutorial");
+	}
+
 	public void MuteSoundsFunc ()
 	{
 		//update prefs

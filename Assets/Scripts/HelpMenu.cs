@@ -61,6 +61,11 @@ public class HelpMenu : MonoBehaviour {
 		this.GetComponent<Canvas>().gameObject.SetActive(false);
 	}
 
+	public void BackToMainMenu()
+	{
+		Application.LoadLevel ("MainMenu");
+	}
+
 	public void MuteSoundsFunc ()
 	{
 		//update prefs
