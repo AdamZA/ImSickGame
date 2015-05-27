@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 		if (timer > 0) 
 		{
 			timer--;
-			buffs.text = "Speedup Left: " + timer/100.0f + "s";
+			buffs.text = "Speedup Left: " + timer/100.0f;
 			if (timer==0) 
 			{
 				speed-=speedUpBonus;

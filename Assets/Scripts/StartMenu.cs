@@ -42,7 +42,15 @@ public class StartMenu : MonoBehaviour {
 		muteMusic = PlayerPrefs.GetInt ("music");
 		
 		if (muteMusic == 1)
+		{
 			music.mute = true;
+			musicButton.image.sprite = musicIconOFF;
+		}
+		if (muteSounds == 1)
+		{
+			music.mute = true;
+			soundButton.image.sprite = soundIconOFF;
+		}
 	}
 
 	public void MoreClick()

@@ -26,6 +26,10 @@ public class InGameMenus : MonoBehaviour {
 	public Sprite soundIcon;
 	public Sprite soundIconOFF;
 
+	public TextMesh pauseText;
+	public GameObject lives;
+	public GameObject buffs;
+
 	// Use this for initialization
 	public void Start () {
 		Time.timeScale = 1;
@@ -46,10 +50,28 @@ public class InGameMenus : MonoBehaviour {
 		muteMusic = PlayerPrefs.GetInt ("music");
 		
 		if (muteMusic == 1)
+		{
 			music.mute = true;
+			musicButton.image.sprite = musicIconOFF;
+		}
+
+		if (muteSounds == 1)
+		{
+			music.mute = true;
+			soundButton.image.sprite = soundIconOFF;
+		}
+
+		pauseText = GameObject.Find ("PauseText").GetComponent<TextMesh>();
+		pauseText.text = "";
+		lives = GameObject.Find ("Lives");
+		buffs = GameObject.Find ("Buffs");
 	}
 
 	public void LaunchPause (){
+
+		pauseText.text = "Paused";
+		buffs.SetActive (false);
+		lives.SetActive (false);
 
 		Time.timeScale = 0;
 
@@ -64,6 +86,11 @@ public class InGameMenus : MonoBehaviour {
 	}
 
 	public void LaunchPlay (){
+
+		buffs.SetActive (true);
+		lives.SetActive (true);
+
+		pauseText.text = "";
 		
 		Time.timeScale = 1;
 

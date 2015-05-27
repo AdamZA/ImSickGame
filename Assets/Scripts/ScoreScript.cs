@@ -15,7 +15,7 @@ public class ScoreScript : MonoBehaviour {
 		score = 0;
 		scoreBar.localScale = new Vector3 (0.0f, 0.0f, 0.0f);
 		scoreText = GameObject.Find ("ScoreText").GetComponent<TextMesh>();
-		scoreText.text = "Cells Absorbed: " + score + " / " + cellstowin;
+		scoreText.text = "Cells Absorbed: " + score + "/" + cellstowin;
 	}
 	
 	// Update is called once per frame
@@ -37,7 +37,7 @@ public class ScoreScript : MonoBehaviour {
 	public void addScore()
 	{
 		score = score + 1;
-		scoreText.text = "Cells Absorbed: " + score + " / " + cellstowin;
+		scoreText.text = "Cells Absorbed: " + score + "/" + cellstowin;
 
 	}
 }
