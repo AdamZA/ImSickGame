@@ -7,7 +7,7 @@ public class ShrinkScript : MonoBehaviour
 	public Transform cameraPos;
 	public float size; //just follow the size of like, one of the sides
 	private float zoomcount = 0.5f;
-	private float shrinkAmount = 0.17f;
+	private float shrinkAmount = 0.0f;
 	public int shrinkCounter = 0;
 	public TextMesh lives;
 

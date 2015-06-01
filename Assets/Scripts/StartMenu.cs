@@ -78,18 +78,18 @@ public class StartMenu : MonoBehaviour {
 	//
 	public void ReturnToBeginningStart()
 	{
-		Application.LoadLevel ("MainMenu");
+		AutoFade.LoadLevel ("MainMenu", 2,1,Color.black);
 	}
 
 	//starting game
 	public void StartGame()
 	{
-		Application.LoadLevel ("Level1");
+		AutoFade.LoadLevel ("Level0", 2,1,Color.black);
 	}
 
 	public void StartTutorial()
 	{
-		Application.LoadLevel ("Tutorial");
+		AutoFade.LoadLevel ("Tutorial", 2,1,Color.black);
 	}
 
 	public void MuteSoundsFunc ()

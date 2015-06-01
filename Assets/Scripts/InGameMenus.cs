@@ -143,7 +143,7 @@ public class InGameMenus : MonoBehaviour {
 	public void ReturnToMainMenu()
 	{
 		Time.timeScale = 1;
-		Application.LoadLevel ("MainMenu");
+		AutoFade.LoadLevel ("MainMenu", 2,1,Color.black);
 	}
 	
 }
